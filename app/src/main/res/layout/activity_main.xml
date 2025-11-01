@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_container"
@@ -7,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Imagem de Fundo -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,119 +14,273 @@
         android:scaleType="centerCrop"
         android:alpha="0.4" />
 
-    <LinearLayout
-        android:id="@+id/imc_content_layout"
+    <!-- ScrollView Vertical -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:padding="24dp"
-        android:background="@drawable/bg_semitransparent_box">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp"
-            android:text="Calculadora de IMC"
-            android:textColor="@android:color/white"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <!-- ID alterado para etPeso -->
-        <!-- CORREÇÃO DE CONTRASTE: Fundo adicionado para destacar o campo -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@android:color/white"
-            app:hintTextColor="@android:color/white"
-            app:boxBackgroundColor="#33FFFFFF">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPeso"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Peso (kg)"
-                android:inputType="numberDecimal"
-                android:textColor="@android:color/white" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- ID alterado para etAltura (com 'A' maiúsculo) -->
-        <!-- CORREÇÃO DE CONTRASTE: Fundo adicionado para destacar o campo -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@android:color/white"
-            app:hintTextColor="@android:color/white"
-            app:boxBackgroundColor="#33FFFFFF">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etAltura"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Altura (m)"
-                android:inputType="numberDecimal"
-                android:textColor="@android:color/white" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="32dp"
-            android:text="Seu IMC é:"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
-
-        <!-- ID alterado para tvResultado -->
-        <TextView
-            android:id="@+id/tvResultado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
-            android:text="-"
-            android:textColor="@android:color/white"
-            android:textSize="44sp"
-            android:textStyle="bold"
-            tools:text="22.5" />
-
+        <!-- Wrapper Principal Vertical -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="32dp">
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="16dp">
 
-            <!-- ID alterado para btLimpar -->
-            <Button
-                android:id="@+id/btLimpar"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="0dp"
+            <!-- =========================================== -->
+            <!-- CAIXA 1: CALCULADORA                      -->
+            <!-- =========================================== -->
+            <LinearLayout
+                android:id="@+id/imc_content_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:text="Limpar"
-                android:textColor="@android:color/white"
-                app:strokeColor="@android:color/white" />
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/bg_semitransparent_box">
 
-            <!-- ID alterado para btCalcular -->
-            <Button
-                android:id="@+id/btCalcular"
-                android:layout_width="0dp"
+                <!-- Título (Tamanho reduzido para 24sp) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:text="Calculadora de IMC"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <!-- Campo Nome -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxStrokeColor="@android:color/white"
+                    app:hintTextColor="@android:color/white"
+                    app:boxBackgroundColor="#33FFFFFF">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Seu nome (opcional)"
+                        android:inputType="textCapWords"
+                        android:textColor="@android:color/white" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Campo Peso -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxStrokeColor="@android:color/white"
+                    app:hintTextColor="@android:color/white"
+                    app:boxBackgroundColor="#33FFFFFF">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPeso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Peso (kg)"
+                        android:inputType="numberDecimal"
+                        android:textColor="@android:color/white" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Campo Altura -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxStrokeColor="@android:color/white"
+                    app:hintTextColor="@android:color/white"
+                    app:boxBackgroundColor="#33FFFFFF">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etAltura"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Altura (m)"
+                        android:inputType="numberDecimal"
+                        android:textColor="@android:color/white" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Label Resultado -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:text="Seu IMC é:"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+                <!-- Display Resultado -->
+                <TextView
+                    android:id="@+id/tvResultado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:text="-"
+                    android:textColor="@android:color/white"
+                    android:textSize="44sp"
+                    android:textStyle="bold"
+                    tools:text="22.5" />
+
+                <!-- Botões -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="24dp">
+                    <Button
+                        android:id="@+id/btLimpar"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:text="Limpar"
+                        android:textColor="@android:color/white"
+                        app:strokeColor="@android:color/white" />
+                    <Button
+                        android:id="@+id/btCalcular"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Calcular"
+                        android:textColor="@android:color/white"
+                        app:backgroundTint="?attr/colorPrimary" />
+                </LinearLayout>
+            </LinearLayout> <!-- Fim da Caixa 1 -->
+
+
+            <!-- ============================================== -->
+            <!-- CAIXA 2: EXPLICAÇÃO                          -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/imc_explanation_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="Calcular"
-                android:textColor="@android:color/white"
-                app:backgroundTint="?attr/colorPrimary" />
-        </LinearLayout>
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_semitransparent_box"
+                android:visibility="gone"
+                tools:visibility="visible">
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:text="O que seu IMC significa?"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvResultadoExplicacao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Calcule seu IMC para ver a classificação."
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:lineSpacingExtra="4dp"
+                    tools:text="Pessoa A, você está com Sobrepeso."/>
+            </LinearLayout> <!-- Fim da Caixa 2 -->
+
+
+            <!-- ============================================== -->
+            <!-- CAIXA 3: HISTÓRICO DE REGISTOS               -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/imc_history_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_semitransparent_box"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:text="Últimos Registos"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- ScrollView Horizontal para a tabela -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- TableLayout para a grelha -->
+                    <TableLayout
+                        android:id="@+id/history_table_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <!-- LINHA 1: CABEÇALHO DA TABELA (COMPLETO) -->
+                        <TableRow android:layout_marginBottom="8dp">
+                            <TextView
+                                android:text="Nome"
+                                android:padding="4dp"
+                                android:minWidth="70dp"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:text="Data"
+                                android:padding="4dp"
+                                android:minWidth="60dp"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:text="Hora"
+                                android:padding="4dp"
+                                android:minWidth="50dp"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold" />
+
+                            <!-- **** CORREÇÃO AQUI **** -->
+                            <TextView
+                                android:text="Peso"
+                                android:padding="4dp"
+                                android:minWidth="50dp"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:text="Altura"
+                                android:padding="4dp"
+                                android:minWidth="50dp"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold" />
+                            <!-- **** FIM DA CORREÇÃO **** -->
+
+                            <TextView
+                                android:text="IMC"
+                                android:padding="4dp"
+                                android:minWidth="50dp"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                        <!-- As linhas da tabela serão adicionadas aqui programaticamente -->
+
+                    </TableLayout>
+                </HorizontalScrollView>
+            </LinearLayout> <!-- Fim da Caixa 3 -->
+
+        </LinearLayout> <!-- Fim do Wrapper Principal -->
+
+    </ScrollView>
 
 </FrameLayout>
+
