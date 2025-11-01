@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fundo"
+        android:scaleType="centerCrop"
+        android:alpha="0.4" />
+
+    <LinearLayout
+        android:id="@+id/imc_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:padding="24dp"
+        android:background="@drawable/bg_semitransparent_box">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"
+            android:text="Calculadora de IMC"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <!-- ID alterado para etPeso -->
+        <!-- CORREÇÃO DE CONTRASTE: Fundo adicionado para destacar o campo -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@android:color/white"
+            app:hintTextColor="@android:color/white"
+            app:boxBackgroundColor="#33FFFFFF">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPeso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Peso (kg)"
+                android:inputType="numberDecimal"
+                android:textColor="@android:color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ID alterado para etAltura (com 'A' maiúsculo) -->
+        <!-- CORREÇÃO DE CONTRASTE: Fundo adicionado para destacar o campo -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@android:color/white"
+            app:hintTextColor="@android:color/white"
+            app:boxBackgroundColor="#33FFFFFF">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAltura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Altura (m)"
+                android:inputType="numberDecimal"
+                android:textColor="@android:color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:text="Seu IMC é:"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <!-- ID alterado para tvResultado -->
+        <TextView
+            android:id="@+id/tvResultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="-"
+            android:textColor="@android:color/white"
+            android:textSize="44sp"
+            android:textStyle="bold"
+            tools:text="22.5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp">
+
+            <!-- ID alterado para btLimpar -->
+            <Button
+                android:id="@+id/btLimpar"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="Limpar"
+                android:textColor="@android:color/white"
+                app:strokeColor="@android:color/white" />
+
+            <!-- ID alterado para btCalcular -->
+            <Button
+                android:id="@+id/btCalcular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="Calcular"
+                android:textColor="@android:color/white"
+                app:backgroundTint="?attr/colorPrimary" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
